@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 import re
 
 # Define the function to handle the message and extract numbers
@@ -25,7 +25,7 @@ def main():
     dispatcher = updater.dispatcher
     
     # Define a message handler to capture text messages
-    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, extract_numbers))
+    dispatcher.add_handler(MessageHandler(filters.text & ~filters.command, extract_numbers))
     
     # Start the bot
     updater.start_polling()
